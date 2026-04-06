@@ -133,24 +133,169 @@ public final class ModeconomiaConfig {
 		return values;
 	}
 
+	/**
+	 * Pool de misiones disponibles para autogeneración diaria.
+	 * Estas misiones se rotan automáticamente cada día (5 misiones/día, 3 CC c/u).
+	 */
 	private static List<MissionDefinition> defaultMissions() {
 		List<MissionDefinition> missions = new ArrayList<>();
-		missions.add(new MissionDefinition("break_blocks",      "Rompe bloques",       MissionType.BREAK_BLOCKS,        64));
-		missions.add(new MissionDefinition("kill_mobs",         "Mata mobs",           MissionType.KILL_MOBS,           10));
-		missions.add(new MissionDefinition("walk_distance",     "Camina distancia",    MissionType.WALK_DISTANCE,      500));
-		missions.add(new MissionDefinition("playtime",          "Tiempo conectado",    MissionType.PLAYTIME_MINUTES,    30));
-		missions.add(new MissionDefinition("join_server",       "Conéctate hoy",       MissionType.JOIN_SERVER,          1));
-		missions.add(new MissionDefinition("capture_pokemon",   "Captura Pokémon",     MissionType.CAPTURE_COBBLEMON,    5));
-		missions.add(new MissionDefinition("defeat_wild",       "Derrota Pokémon salvajes", MissionType.DEFEAT_WILD_COBBLEMON, 10));
-		missions.add(new MissionDefinition("hatch_egg",         "Eclosiona huevos",    MissionType.HATCH_EGG,            1));
-		missions.add(new MissionDefinition("evolve_pokemon",    "Evoluciona Pokémon",  MissionType.EVOLVE_COBBLEMON,     3));
-		missions.add(new MissionDefinition("use_poke_ball",     "Usa Poké Ball",       MissionType.CAPTURE_WITH_BALL,    3, "poke_ball"));
-		missions.add(new MissionDefinition("catch_fire_type",   "Captura tipo Fuego",  MissionType.CAPTURE_SPECIFIC_TYPE,3, "fire"));
-		missions.add(new MissionDefinition("catch_at_night",    "Captura de noche",    MissionType.CATCH_AT_NIGHT,       3));
-		missions.add(new MissionDefinition("catch_shiny",       "Captura un shiny",    MissionType.CAPTURE_SHINY_COBBLEMON, 1));
-		missions.add(new MissionDefinition("catch_legendary",   "Captura legendario",  MissionType.CAPTURE_LEGENDARY_COBBLEMON, 1));
-		missions.add(new MissionDefinition("trade_pokemon",     "Intercambia Pokémon", MissionType.TRADE_POKEMON,        1));
-		missions.add(new MissionDefinition("win_pvp",          "Gana batalla PvP",    MissionType.WIN_TRAINER_BATTLE,   1));
+
+		// ════════════════════════════════════════════════════
+		// VANILLA — PASIVAS (auto-tracking)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("break_blocks",      "Rompe bloques",       MissionType.BREAK_BLOCKS,        64, 0.3));
+		missions.add(new MissionDefinition("kill_mobs",         "Mata mobs",           MissionType.KILL_MOBS,           10, 0.3));
+		missions.add(new MissionDefinition("walk_distance",     "Camina distancia",    MissionType.WALK_DISTANCE,      500, 0.3));
+		missions.add(new MissionDefinition("playtime",          "Tiempo conectado",    MissionType.PLAYTIME_MINUTES,    30, 0.3));
+		missions.add(new MissionDefinition("join_server",       "Conéctate hoy",       MissionType.JOIN_SERVER,          1, 0.3));
+		missions.add(new MissionDefinition("place_blocks",      "Coloca bloques",      MissionType.PLACE_BLOCKS,       32, 0.3));
+		missions.add(new MissionDefinition("craft_items",       "Craftea items",       MissionType.CRAFT_ITEMS,        16, 0.3));
+		missions.add(new MissionDefinition("fish_items",        "Pesca veces",         MissionType.FISH_ITEMS,          5, 0.3));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — CAPTURA BÁSICA (MANUAL)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("capture_pokemon",   "Captura Pokémon",     MissionType.CAPTURE_COBBLEMON,     5, 0.3));
+		missions.add(new MissionDefinition("capture_shiny",     "Captura un shiny",    MissionType.CAPTURE_SHINY_COBBLEMON, 1, 3.0));
+		missions.add(new MissionDefinition("capture_legendary", "Captura legendario",  MissionType.CAPTURE_LEGENDARY_COBBLEMON, 1, 5.0));
+		missions.add(new MissionDefinition("capture_radiant",   "Captura radiante",    MissionType.CAPTURE_RADIANT_COBBLEMON, 1, 4.0));
+		missions.add(new MissionDefinition("capture_paradox",   "Captura paradoja",    MissionType.CAPTURE_PARADOX_COBBLEMON, 2, 2.0));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — CAPTURA CON FILTRO (MANUAL)
+		// ════════════════════════════════════════════════════
+		// Tipos elementales
+		missions.add(new MissionDefinition("catch_fire",        "Captura tipo Fuego",  MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "fire"));
+		missions.add(new MissionDefinition("catch_water",       "Captura tipo Agua",   MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "water"));
+		missions.add(new MissionDefinition("catch_grass",       "Captura tipo Planta", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "grass"));
+		missions.add(new MissionDefinition("catch_electric",    "Captura tipo Eléctrico", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "electric"));
+		missions.add(new MissionDefinition("catch_psychic",     "Captura tipo Psíquico", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "psychic"));
+		missions.add(new MissionDefinition("catch_ghost",       "Captura tipo Fantasma", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "ghost"));
+		missions.add(new MissionDefinition("catch_dragon",      "Captura tipo Dragón", MissionType.CAPTURE_SPECIFIC_TYPE, 2, 0.4, "dragon"));
+
+		// Poké Balls
+		missions.add(new MissionDefinition("use_poke_ball",     "Usa Poké Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "poke_ball"));
+		missions.add(new MissionDefinition("use_fast_ball",     "Usa Fast Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "fast_ball"));
+		missions.add(new MissionDefinition("use_quick_ball",    "Usa Quick Ball",      MissionType.CAPTURE_WITH_BALL,    3, 0.3, "quick_ball"));
+		missions.add(new MissionDefinition("use_dusk_ball",     "Usa Dusk Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "dusk_ball"));
+		missions.add(new MissionDefinition("use_net_ball",      "Usa Net Ball",        MissionType.CAPTURE_WITH_BALL,    3, 0.3, "net_ball"));
+		missions.add(new MissionDefinition("use_dive_ball",     "Usa Dive Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "dive_ball"));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — CONDICIONES ESPECIALES (MANUAL)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("catch_at_night",    "Captura de noche",    MissionType.CATCH_AT_NIGHT,       3, 0.4));
+		missions.add(new MissionDefinition("catch_during_rain", "Captura con lluvia",  MissionType.CATCH_DURING_RAIN,    3, 0.4));
+		missions.add(new MissionDefinition("catch_no_damage",   "Captura sin daño",    MissionType.CATCH_WITHOUT_DAMAGE, 2, 0.5));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — COMBATE (MANUAL)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("defeat_wild",       "Derrota salvajes",    MissionType.DEFEAT_WILD_COBBLEMON, 10, 0.3));
+		missions.add(new MissionDefinition("win_pvp",           "Gana batalla PvP",    MissionType.WIN_TRAINER_BATTLE,    1, 0.5));
+		missions.add(new MissionDefinition("defeat_fire",       "Derrota tipo Fuego",  MissionType.DEFEAT_SPECIFIC_TYPE,  5, 0.3, "fire"));
+		missions.add(new MissionDefinition("defeat_water",      "Derrota tipo Agua",   MissionType.DEFEAT_SPECIFIC_TYPE,  5, 0.3, "water"));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — EVOLUCIÓN Y CRIANZA (MANUAL)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("evolve_pokemon",    "Evoluciona Pokémon",  MissionType.EVOLVE_COBBLEMON,      2, 0.5));
+		missions.add(new MissionDefinition("hatch_egg",         "Eclosiona huevos",    MissionType.HATCH_EGG,             1, 0.5));
+		missions.add(new MissionDefinition("evolve_with_stone", "Evoluciona con piedra", MissionType.EVOLVE_USING_STONE,  2, 0.5));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — INTERACCIÓN (MANUAL)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("trade_pokemon",     "Intercambia Pokémon", MissionType.TRADE_POKEMON,         1, 0.5));
+		missions.add(new MissionDefinition("nickname_pokemon",  "Pon apodo",           MissionType.NICKNAME_POKEMON,      3, 0.3));
+		missions.add(new MissionDefinition("revive_fossil",     "Revive fósil",        MissionType.REVIVE_FOSSIL,         1, 0.5));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — COLECCIÓN (PASSIVE)
+		// ════════════════════════════════════════════════════
+		missions.add(new MissionDefinition("pokedex_entries",   "Registra en Pokédex", MissionType.COLLECT_POKEDEX_ENTRIES, 5, 0.3));
+
+		// ════════════════════════════════════════════════════
+		// COBBLEMON — NUEVAS MISIONES VARIADAS (MANUAL)
+		// ════════════════════════════════════════════════════
+		// Más tipos de captura
+		missions.add(new MissionDefinition("catch_steel",       "Captura tipo Acero",  MissionType.CAPTURE_SPECIFIC_TYPE, 2, 0.4, "steel"));
+		missions.add(new MissionDefinition("catch_fairy",       "Captura tipo Hada",   MissionType.CAPTURE_SPECIFIC_TYPE, 2, 0.4, "fairy"));
+		missions.add(new MissionDefinition("catch_dark",        "Captura tipo Siniestro", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "dark"));
+		missions.add(new MissionDefinition("catch_flying",      "Captura tipo Volador", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "flying"));
+		missions.add(new MissionDefinition("catch_ground",      "Captura tipo Tierra", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "ground"));
+		missions.add(new MissionDefinition("catch_bug",         "Captura tipo Bicho",  MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "bug"));
+		missions.add(new MissionDefinition("catch_ice",         "Captura tipo Hielo",  MissionType.CAPTURE_SPECIFIC_TYPE, 2, 0.4, "ice"));
+		missions.add(new MissionDefinition("catch_poison",      "Captura tipo Veneno", MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "poison"));
+		missions.add(new MissionDefinition("catch_fighting",    "Captura tipo Lucha",  MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "fighting"));
+		missions.add(new MissionDefinition("catch_rock",        "Captura tipo Roca",   MissionType.CAPTURE_SPECIFIC_TYPE, 3, 0.3, "rock"));
+
+		// Más bolas especializadas
+		missions.add(new MissionDefinition("use_luxury_ball",   "Usa Luxury Ball",     MissionType.CAPTURE_WITH_BALL,    3, 0.3, "luxury_ball"));
+		missions.add(new MissionDefinition("use_heal_ball",     "Usa Heal Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "heal_ball"));
+		missions.add(new MissionDefinition("use_repeat_ball",   "Usa Repeat Ball",     MissionType.CAPTURE_WITH_BALL,    3, 0.3, "repeat_ball"));
+		missions.add(new MissionDefinition("use_timer_ball",    "Usa Timer Ball",      MissionType.CAPTURE_WITH_BALL,    3, 0.3, "timer_ball"));
+		missions.add(new MissionDefinition("use_nest_ball",     "Usa Nest Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "nest_ball"));
+		missions.add(new MissionDefinition("use_lure_ball",     "Usa Lure Ball",       MissionType.CAPTURE_WITH_BALL,    3, 0.3, "lure_ball"));
+		missions.add(new MissionDefinition("use_moon_ball",     "Usa Moon Ball",       MissionType.CAPTURE_WITH_BALL,    2, 0.4, "moon_ball"));
+		missions.add(new MissionDefinition("use_friend_ball",   "Usa Friend Ball",     MissionType.CAPTURE_WITH_BALL,    2, 0.4, "friend_ball"));
+		missions.add(new MissionDefinition("use_level_ball",    "Usa Level Ball",      MissionType.CAPTURE_WITH_BALL,    2, 0.4, "level_ball"));
+
+		// Capturas con condiciones combinadas
+		missions.add(new MissionDefinition("catch_fire_type_with_ball", "Captura Fuego con Dusk Ball", MissionType.CAPTURE_TYPE_WITH_BALL, 2, 0.5, "fire", "dusk_ball"));
+		missions.add(new MissionDefinition("catch_water_type_with_ball", "Captura Agua con Net Ball", MissionType.CAPTURE_TYPE_WITH_BALL, 2, 0.5, "water", "net_ball"));
+		missions.add(new MissionDefinition("catch_ghost_at_night", "Captura Fantasma de noche", MissionType.CAPTURE_SPECIFIC_TYPE, 2, 0.5, "ghost"));
+
+		// Más misiones de combate
+		missions.add(new MissionDefinition("defeat_ghost",      "Derrota tipo Fantasma", MissionType.DEFEAT_SPECIFIC_TYPE, 5, 0.3, "ghost"));
+		missions.add(new MissionDefinition("defeat_psychic",    "Derrota tipo Psíquico", MissionType.DEFEAT_SPECIFIC_TYPE, 5, 0.3, "psychic"));
+		missions.add(new MissionDefinition("defeat_dragon",     "Derrota tipo Dragón", MissionType.DEFEAT_SPECIFIC_TYPE, 3, 0.4, "dragon"));
+		missions.add(new MissionDefinition("defeat_steel",      "Derrota tipo Acero",  MissionType.DEFEAT_SPECIFIC_TYPE, 5, 0.3, "steel"));
+		missions.add(new MissionDefinition("defeat_fairy",      "Derrota tipo Hada",   MissionType.DEFEAT_SPECIFIC_TYPE, 5, 0.3, "fairy"));
+
+		// Misiones de evolución específicas
+		missions.add(new MissionDefinition("evolve_with_stone_fire",  "Evoluciona con Piedra Fuego", MissionType.EVOLVE_USING_STONE, 1, 0.5));
+		missions.add(new MissionDefinition("evolve_with_stone_water", "Evoluciona con Piedra Agua", MissionType.EVOLVE_USING_STONE, 1, 0.5));
+		missions.add(new MissionDefinition("evolve_with_stone_thunder", "Evoluciona con Piedra Trueno", MissionType.EVOLVE_USING_STONE, 1, 0.5));
+		missions.add(new MissionDefinition("evolve_with_stone_leaf",  "Evoluciona con Piedra Hoja", MissionType.EVOLVE_USING_STONE, 1, 0.5));
+
+		// Misiones de rango de nivel
+		missions.add(new MissionDefinition("catch_low_level",   "Captura Pokémon nivel bajo (1-10)", MissionType.CAPTURE_LEVEL_RANGE, 5, 0.3, "1:10"));
+		missions.add(new MissionDefinition("catch_mid_level",   "Captura Pokémon nivel medio (20-40)", MissionType.CAPTURE_LEVEL_RANGE, 3, 0.4, "20:40"));
+		missions.add(new MissionDefinition("catch_high_level",  "Captura Pokémon nivel alto (50+)", MissionType.CAPTURE_LEVEL_RANGE, 2, 0.5, "50:100"));
+
+		// Misiones de bioma
+		missions.add(new MissionDefinition("catch_in_forest",   "Captura en bosque",   MissionType.CAPTURE_IN_BIOME, 3, 0.4, "forest"));
+		missions.add(new MissionDefinition("catch_in_mountain", "Captura en montaña",   MissionType.CAPTURE_IN_BIOME, 3, 0.4, "mountain"));
+		missions.add(new MissionDefinition("catch_in_beach",    "Captura en playa",     MissionType.CAPTURE_IN_BIOME, 3, 0.4, "beach"));
+		missions.add(new MissionDefinition("catch_in_cave",     "Captura en cueva",     MissionType.CAPTURE_IN_BIOME, 3, 0.4, "cave"));
+
+		// Más misiones de condiciones especiales
+		missions.add(new MissionDefinition("catch_shiny_type_fire",   "Captura shiny tipo Fuego", MissionType.CAPTURE_SHINY_SPECIFIC_TYPE, 1, 4.0, "fire"));
+		missions.add(new MissionDefinition("catch_shiny_type_water",  "Captura shiny tipo Agua", MissionType.CAPTURE_SHINY_SPECIFIC_TYPE, 1, 4.0, "water"));
+		missions.add(new MissionDefinition("catch_shiny_type_ghost",  "Captura shiny tipo Fantasma", MissionType.CAPTURE_SHINY_SPECIFIC_TYPE, 1, 4.0, "ghost"));
+
+		// Misiones específicas de especies populares
+		missions.add(new MissionDefinition("catch_pikachu",     "Captura Pikachu",     MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "pikachu"));
+		missions.add(new MissionDefinition("catch_eevee",       "Captura Eevee",       MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "eevee"));
+		missions.add(new MissionDefinition("catch_ditto",       "Captura Ditto",       MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "ditto"));
+		missions.add(new MissionDefinition("catch_gible",       "Captura Gible",       MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "gible"));
+		missions.add(new MissionDefinition("catch_larvitar",    "Captura Larvitar",    MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "larvitar"));
+		missions.add(new MissionDefinition("catch_bagon",       "Captura Bagon",       MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "bagon"));
+		missions.add(new MissionDefinition("catch_beldum",      "Captura Beldum",      MissionType.CAPTURE_SPECIFIC_SPECIES, 1, 0.5, "beldum"));
+
+		// Misiones de defeat específicas
+		missions.add(new MissionDefinition("defeat_rattata",    "Derrota Rattata",     MissionType.DEFEAT_SPECIFIC_SPECIES, 5, 0.3, "rattata"));
+		missions.add(new MissionDefinition("defeat_pidgey",     "Derrota Pidgey",      MissionType.DEFEAT_SPECIFIC_SPECIES, 5, 0.3, "pidgey"));
+		missions.add(new MissionDefinition("defeat_zubat",      "Derrota Zubat",       MissionType.DEFEAT_SPECIFIC_SPECIES, 5, 0.3, "zubat"));
+
+		// Misiones vanilla adicionales
+		missions.add(new MissionDefinition("break_stone",       "Rompe piedra",        MissionType.BREAK_SPECIFIC_BLOCK, 32, 0.3, "stone"));
+		missions.add(new MissionDefinition("break_ore",         "Rompe mena",          MissionType.BREAK_SPECIFIC_BLOCK, 16, 0.4, "coal_ore"));
+		missions.add(new MissionDefinition("kill_zombie",       "Mata zombies",        MissionType.KILL_SPECIFIC_MOB, 10, 0.3, "zombie"));
+		missions.add(new MissionDefinition("kill_skeleton",     "Mata esqueletos",     MissionType.KILL_SPECIFIC_MOB, 10, 0.3, "skeleton"));
+		missions.add(new MissionDefinition("kill_creeper",      "Mata creepers",       MissionType.KILL_SPECIFIC_MOB, 5, 0.4, "creeper"));
+
 		return missions;
 	}
 
