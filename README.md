@@ -19,7 +19,7 @@ Economy mod for Minecraft Fabric with Cobblemon integration. Adds a complete eco
   - **Biome**: Catch Pokémon in specific biomes
 
 ### Shop System
-- **250+ items** across **35+ categories**:
+- **350+ items** across **45+ categories**:
   - Poké Balls (all types)
   - Potions & Vitamins
   - Mints (all natures)
@@ -40,6 +40,7 @@ Economy mod for Minecraft Fabric with Cobblemon integration. Adds a complete eco
 
 - **Decimal price support** (e.g., 0.50, 1.25, 2.75 CC)
 - **Player marketplace** - players can sell items to other players
+- **In-game shop management** - `/shopitem` command for admins to add/remove shop items dynamically
 
 ### AFK Rewards
 - Earn CobbleCoins for being AFK in designated zones
@@ -62,6 +63,7 @@ Economy mod for Minecraft Fabric with Cobblemon integration. Adds a complete eco
 ### Admin Commands
 - `/auth` - Admin panel (view accounts, force login/logout, reload config)
 - `/ccoins owner` - Owner panel for mission management
+- `/shopitem` - In-game shop management (add/remove items, set prices)
 
 ## Configuration
 
