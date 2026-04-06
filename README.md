@@ -1,13 +1,15 @@
 # Modeconomia - Economy Mod for Cobblemon
 
-Economy mod for Minecraft Fabric with Cobblemon integration. Adds a complete economy system with daily missions, shop, and AFK rewards.
+Economy mod for Minecraft Fabric with Cobblemon integration. Adds a complete economy system with daily missions, shop, marketplace, and AFK rewards.
+
+**Active Minecraft version:** 1.21.11 (using Stonecutter for multi-version support)
 
 ## Features
 
 ### Daily Missions System
 - **5 random daily missions** that auto-generate every 24 hours
 - **3 CobbleCoins reward** per mission
-- **60+ mission types** including:
+- **110+ mission types** including:
   - **Vanilla**: Break blocks, kill mobs, walk distance, playtime, craft items, fish
   - **Cobblemon Capture**: All elemental types, specific species, different Poké Balls
   - **Combat**: Defeat wild Pokémon, win PvP battles, defeat specific types
@@ -17,7 +19,7 @@ Economy mod for Minecraft Fabric with Cobblemon integration. Adds a complete eco
   - **Biome**: Catch Pokémon in specific biomes
 
 ### Shop System
-- **150+ items** across **25 categories**:
+- **250+ items** across **35+ categories**:
   - Poké Balls (all types)
   - Potions & Vitamins
   - Mints (all natures)
