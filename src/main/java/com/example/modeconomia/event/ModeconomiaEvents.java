@@ -16,8 +16,6 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.FishingRodItem;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -71,19 +69,6 @@ public final class ModeconomiaEvents {
             if (stack.getItem() instanceof FishingRodItem && sp.fishHook != null)
                 MissionManager.onFish(sp);
             return TypedActionResult.pass(stack);
-        });
-
-        // ── KILL_MOBS + KILL_SPECIFIC_MOB (vanilla only, excludes Pokémon) ──
-        ServerEntityCombatEvents.AFTER_KILLED_OTHER_ENTITY.register((world, killer, killed) -> {
-            if (!(killer instanceof ServerPlayerEntity player)) return;
-            if (!(killed instanceof LivingEntity)) return;
-            if (killed.getType() == EntityType.PLAYER) return;
-            // Skip Pokémon entities to avoid double-counting with BATTLE_VICTORY
-            String cls = killed.getClass().getName();
-            if (cls.contains("cobblemon") || cls.contains("pokemon") || cls.contains("Pokemon")) return;
-            String entityId = net.minecraft.registry.Registries.ENTITY_TYPE
-                .getId(killed.getType()).toString();
-            MissionManager.onKillMob(player, entityId);
         });
 
         // ── CATCH_WITHOUT_DAMAGE — track player damage ──

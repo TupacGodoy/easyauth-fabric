@@ -571,8 +571,7 @@ public class EconomiaScreenHandler extends GenericContainerScreenHandler {
         com.cobblemania.economia.data.MissionType type = switch (page) {
             case 0 -> switch (slot) {
                 case 10 -> com.cobblemania.economia.data.MissionType.BREAK_BLOCKS;
-                case 11 -> com.cobblemania.economia.data.MissionType.KILL_MOBS;
-                case 12 -> com.cobblemania.economia.data.MissionType.WALK_DISTANCE;
+                case 11 -> com.cobblemania.economia.data.MissionType.WALK_DISTANCE;
                 case 13 -> com.cobblemania.economia.data.MissionType.PLAYTIME_MINUTES;
                 case 14 -> com.cobblemania.economia.data.MissionType.JOIN_SERVER;
                 case 19 -> com.cobblemania.economia.data.MissionType.CAPTURE_COBBLEMON;
@@ -741,8 +740,6 @@ public class EconomiaScreenHandler extends GenericContainerScreenHandler {
                 // Vanilla
                 case BREAK_BLOCKS            -> "§8Romper bloques";
                 case BREAK_SPECIFIC_BLOCK    -> "§8Bloque: §f" + f1;
-                case KILL_MOBS               -> "§8Matar mobs";
-                case KILL_SPECIFIC_MOB       -> "§8Mob: §f" + f1;
                 case WALK_DISTANCE           -> "§8Caminar (bloques) §7— AUTO";
                 case PLAYTIME_MINUTES        -> "§8Tiempo conectado (min) §7— AUTO";
                 case JOIN_SERVER             -> "§8Conectarse hoy §7— AUTO";
@@ -2847,11 +2844,6 @@ public class EconomiaScreenHandler extends GenericContainerScreenHandler {
                 case BREAK_SPECIFIC_BLOCK ->
                     filterNum == 1
                         ? "§6§l▶ Filtro: Bloque específico\n§7Escribe el ID §e(ej: §fminecraft:diamond_ore§7, §fminecraft:oak_log§7, §fminecraft:stone§7):"
-                        : null;
-
-                case KILL_SPECIFIC_MOB ->
-                    filterNum == 1
-                        ? "§6§l▶ Filtro: Entidad específica\n§7Escribe el nombre §e(ej: §fzombie§7, §fskeleton§7, §fblaze§7, §fcreeper§7, §fenderman§7):"
                         : null;
 
                 case WIN_RANKED_SPECIFIC_RANK ->

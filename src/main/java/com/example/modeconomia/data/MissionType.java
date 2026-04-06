@@ -17,8 +17,6 @@ public enum MissionType {
     // ════════════════════════════════════
     BREAK_BLOCKS,        // Romper X bloques de cualquier tipo
     BREAK_SPECIFIC_BLOCK,// Romper X bloques de tipo concreto [desc=block_id, ej: "stone"]
-    KILL_MOBS,           // Matar X mobs (cualquiera)
-    KILL_SPECIFIC_MOB,   // Matar X de un mob concreto [desc=entity_id, ej: "zombie"]
     WALK_DISTANCE,       // Caminar X bloques
     PLAYTIME_MINUTES,    // Estar conectado X minutos
     JOIN_SERVER,         // Conectarse al servidor (cuenta 1 por día)

@@ -145,7 +145,6 @@ public final class ModeconomiaConfig {
 		// ════════════════════════════════════════════════════
 		MissionDefinition m;
 		m = new MissionDefinition("break_blocks", "Rompe bloques", MissionType.BREAK_BLOCKS, 64); m.reward = 0.3; missions.add(m);
-		m = new MissionDefinition("kill_mobs", "Mata mobs", MissionType.KILL_MOBS, 10); m.reward = 0.3; missions.add(m);
 		m = new MissionDefinition("walk_distance", "Camina distancia", MissionType.WALK_DISTANCE, 500); m.reward = 0.3; missions.add(m);
 		m = new MissionDefinition("playtime", "Tiempo conectado", MissionType.PLAYTIME_MINUTES, 30); m.reward = 0.3; missions.add(m);
 		m = new MissionDefinition("join_server", "Conéctate hoy", MissionType.JOIN_SERVER, 1); m.reward = 0.3; missions.add(m);
@@ -293,9 +292,6 @@ public final class ModeconomiaConfig {
 		// Misiones vanilla adicionales
 		m = new MissionDefinition("break_stone", "Rompe piedra", MissionType.BREAK_SPECIFIC_BLOCK, 32, "stone"); m.reward = 0.3; missions.add(m);
 		m = new MissionDefinition("break_ore", "Rompe mena", MissionType.BREAK_SPECIFIC_BLOCK, 16, "coal_ore"); m.reward = 0.4; missions.add(m);
-		m = new MissionDefinition("kill_zombie", "Mata zombies", MissionType.KILL_SPECIFIC_MOB, 10, "zombie"); m.reward = 0.3; missions.add(m);
-		m = new MissionDefinition("kill_skeleton", "Mata esqueletos", MissionType.KILL_SPECIFIC_MOB, 10, "skeleton"); m.reward = 0.3; missions.add(m);
-		m = new MissionDefinition("kill_creeper", "Mata creepers", MissionType.KILL_SPECIFIC_MOB, 5, "creeper"); m.reward = 0.4; missions.add(m);
 
 		return missions;
 	}

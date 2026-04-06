@@ -281,12 +281,6 @@ public final class MissionManager {
         addProgress(player, MissionType.PLACE_BLOCKS, 1);
     }
 
-    /** Llamado cuando el jugador mata un mob */
-    public static void onKillMob(ServerPlayerEntity player, String entityId) {
-        addProgress(player, MissionType.KILL_MOBS, 1);
-        addProgressFiltered(player, MissionType.KILL_SPECIFIC_MOB, 1, entityId);
-    }
-
     /** Llamado cuando el jugador craftea */
     public static void onCraft(ServerPlayerEntity player) {
         addProgress(player, MissionType.CRAFT_ITEMS, 1);
