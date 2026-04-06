@@ -10,6 +10,7 @@
 ## Sistema de Tienda - Completado (2026-04-06)
 
 - [x] ~~Eliminar misiones de matar mobs (no hay mobs en Minecraft)~~
+- [x] ~~Sistema de tags para modificar tienda desde el juego~~
 - [x] ~~NPCs múltiples para tienda del spawn~~ - Sistema actual usa un solo NPC que abre selector de categorías
 - [x] ~~Más items en la tienda~~ - 100+ items nuevos agregados en 10 categorías adicionales
 - [x] ~~Balancear precios con decimales~~ - Los precios ya soportan decimales (ej: 0.50, 1.25, 2.75)
