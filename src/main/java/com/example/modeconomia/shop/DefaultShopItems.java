@@ -478,6 +478,146 @@ public final class DefaultShopItems {
             {"cobblemon:star_piece",       "15.00"},
         });
 
+        // ── Items de Entrenamiento ──
+        slot = addItems(list, slot, "entrenamiento", new String[][]{
+            {"cobblemon:guard_spec",        "3.00"},
+            {"cobblemon:dire_hit",          "3.00"},
+            {"cobblemon:x_attack",          "3.00"},
+            {"cobblemon:x_defense",         "3.00"},
+            {"cobblemon:x_speed",           "3.00"},
+            {"cobblemon:x_sp_atk",          "3.00"},
+            {"cobblemon:x_sp_def",          "3.00"},
+            {"cobblemon:x_accuracy",        "3.00"},
+            {"cobblemon:ability_capsule",  "25.00"},
+            {"cobblemon:ability_patch",    "75.00"},
+        });
+
+        // ── Objetos de Crianza ──
+        slot = addItems(list, slot, "crianza", new String[][]{
+            {"cobblemon:incense",           "4.00"},
+            {"cobblemon:sea_incense",       "4.00"},
+            {"cobblemon:wave_incense",      "4.00"},
+            {"cobblemon:rose_incense",      "4.00"},
+            {"cobblemon:lax_incense",       "4.00"},
+            {"cobblemon:luck_incense",      "4.00"},
+            {"cobblemon:full_incense",      "4.00"},
+            {"cobblemon:odd_incense",       "4.00"},
+            {"cobblemon:pure_incense",      "4.00"},
+            {"cobblemon:rock_incense",      "4.00"},
+            {"cobblemon:egg_charm",        "20.00"},
+        });
+
+        // ── Materiales de Crafting ──
+        slot = addItems(list, slot, "materiales", new String[][]{
+            {"cobblemon:iron_ingot",        "0.50"},
+            {"cobblemon:steel_ingot",       "0.75"},
+            {"cobblemon:basalt",            "0.25"},
+            {"cobblemon:deepslate",         "0.25"},
+            {"cobblemon:obsidian",          "0.50"},
+            {"cobblemon:quartz",            "0.75"},
+            {"cobblemon:amethyst_shard",    "1.00"},
+            {"cobblemon:diamond",           "2.50"},
+            {"cobblemon:emerald",           "2.00"},
+            {"cobblemon:lapis_lazuli",      "0.75"},
+            {"cobblemon:redstone",          "0.50"},
+            {"cobblemon:glowstone_dust",    "0.75"},
+        });
+
+        // ── Fósiles ──
+        slot = addItems(list, slot, "fosiles", new String[][]{
+            {"cobblemon:fossilised_dino",   "5.00"},
+            {"cobblemon:fossilised_fish",   "5.00"},
+            {"cobblemon:fossilised_shell",  "5.00"},
+            {"cobblemon:fossilised_web",    "5.00"},
+            {"cobblemon:fossilised_skull",  "5.00"},
+            {"cobblemon:fossilised_draco",  "5.00"},
+            {"cobblemon:fossilised_amber",  "8.00"},
+            {"cobblemon:old_amber",        "10.00"},
+        });
+
+        // ── Shards y Polvos ──
+        slot = addItems(list, slot, "shards", new String[][]{
+            {"cobblemon:red_shard",         "1.50"},
+            {"cobblemon:blue_shard",        "1.50"},
+            {"cobblemon:yellow_shard",      "1.50"},
+            {"cobblemon:green_shard",       "1.50"},
+            {"cobblemon:fire_shard",        "2.00"},
+            {"cobblemon:water_shard",       "2.00"},
+            {"cobblemon:grass_shard",       "2.00"},
+            {"cobblemon:electric_shard",    "2.00"},
+            {"cobblemon:psychic_shard",     "2.00"},
+            {"cobblemon:fighting_shard",    "2.00"},
+            {"cobblemon:cosmos_flower",     "3.00"},
+            {"cobblemon:comet_shard",       "5.00"},
+            {"cobblemon:stardust",          "2.50"},
+            {"cobblemon:star_piece",        "8.00"},
+        });
+
+        // ── Objetos Legendarios ──
+        slot = addItems(list, slot, "legendarios", new String[][]{
+            {"cobblemon:adamant_crystal",  "50.00"},
+            {"cobblemon:lustrous_globe",   "50.00"},
+            {"cobblemon:griseous_crystal", "50.00"},
+            {"cobblemon:n_reactor",        "40.00"},
+            {"cobblemon:prison_bottle",    "35.00"},
+            {"cobblemon:relic_crown",      "30.00"},
+            {"cobblemon:relic_gold",       "15.00"},
+            {"cobblemon:strange_ball",     "12.00"},
+            {"cobblemon:galarica_cuff",    "15.00"},
+            {"cobblemon:galarica_wreath",  "20.00"},
+        });
+
+        // ── TMs Especiales (Set Moves) ──
+        slot = addItems(list, slot, "tm_especiales", new String[][]{
+            {"cobblemon:tm_trick",          "8.00"},
+            {"cobblemon:tm_taunt",          "8.00"},
+            {"cobblemon:tm_torment",        "8.00"},
+            {"cobblemon:tm_flatter",        "8.00"},
+            {"cobblemon:tm_will_o_wisp",    "10.00"},
+            {"cobblemon:tm_memento",        "10.00"},
+            {"cobblemon:tm_facade",         "10.00"},
+            {"cobblemon:tm_helping_hand",   "8.00"},
+            {"cobblemon:tm_magic_coat",     "10.00"},
+            {"cobblemon:tm_recycle",        "6.00"},
+            {"cobblemon:tm_snatch",         "8.00"},
+            {"cobblemon:tm_secret_power",   "8.00"},
+            {"cobblemon:tm_hyper_voice",    "12.00"},
+            {"cobblemon:tm_close_combbat",  "15.00"},
+        });
+
+        // ── Accesorios Competitivos ──
+        slot = addItems(list, slot, "accesorios", new String[][]{
+            {"cobblemon:destiny_knot",      "8.00"},
+            {"cobblemon:everstone",         "3.00"},
+            {"cobblemon:flame_body",        "5.00"},
+            {"cobblemon:flame_orb",         "4.00"},
+            {"cobblemon:toxic_orb",         "4.00"},
+            {"cobblemon:black_sludge",      "4.00"},
+            {"cobblemon:sticky_barb",       "4.00"},
+            {"cobblemon:iron_ball",         "4.00"},
+            {"cobblemon:lagging_tail",      "4.00"},
+            {"cobblemon:full_incense",      "4.00"},
+            {"cobblemon:quick_powder",      "5.00"},
+            {"cobblemon:metal_powder",      "5.00"},
+            {"cobblemon:thick_club",        "6.00"},
+            {"cobblemon:light_ball",        "8.00"},
+            {"cobblemon:leek",              "6.00"},
+        });
+
+        // ── Items Decorativos / Varios ──
+        slot = addItems(list, slot, "varios", new String[][]{
+            {"cobblemon:bike",             "50.00"},
+            {"cobblemon:acro_bike",        "50.00"},
+            {"cobblemon:mach_bike",        "50.00"},
+            {"cobblemon:old_rod",          "10.00"},
+            {"cobblemon:good_rod",         "25.00"},
+            {"cobblemon:super_rod",        "50.00"},
+            {"cobblemon:itemfinder",       "15.00"},
+            {"cobblemon:dowsing_machine",  "25.00"},
+            {"cobblemon:town_map",          "5.00"},
+            {"cobblemon:vs_seeker",        "20.00"},
+        });
+
         return list;
     }
 
