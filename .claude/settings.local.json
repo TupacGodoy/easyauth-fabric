@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(unzip:*)",
+      "Bash(mv \"project/mod_v4\"/* .)",
+      "Bash(rm -rf project)",
+      "Bash(rm -f \"CobbleMania-Economia-src-v5 \\(2\\).zip\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo:*)",
+      "Bash(git clone:*)",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)",
+      "Bash(gh api:*)",
+      "Bash(powershell:*)",
+      "Bash(git remote:*)",
+      "Bash(./gradlew build:*)",
+      "Bash(gradle wrapper:*)",
+      "Bash(curl:*)",
+      "Bash(chmod +x gradlew)",
+      "Bash(./gradlew dependencies:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(./gradlew clean:*)",
+      "Bash(git reset:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git checkout:*)",
+      "Bash(git clean:*)"
+    ]
+  }
+}

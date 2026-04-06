@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "cobblemania-economia",
+	"version": "${version}",
+	"name": "CobbleMania Economia",
+	"description": "Sistema de economia, misiones con NPC aldeano, zona AFK y tienda para CobbleMania.",
+	"authors": [
+		"CobbleMania Staff"
+	],
+	"contact": {
+		"homepage": "https://cobblemania.com"
+	},
+	"license": "CC0-1.0",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.cobblemania.economia.main.CobbleMania"
+		],
+		"client": [
+			"com.cobblemania.economia.main.CobbleManiaCLient"
+		]
+	},
+	"mixins": ["creates-cobelmon-fabric.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}

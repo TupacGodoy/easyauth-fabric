@@ -1,0 +1,11 @@
+{
+    "required": true,
+    "package": "com.cobblemania.economia.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "CraftingResultMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 0
+    }
+}

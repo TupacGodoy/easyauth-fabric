@@ -1,0 +1,48 @@
+plugins {
+    id 'fabric-loom' version '1.9.2'
+    id 'maven-publish'
+}
+
+version = '1.0.0'
+group = 'com.cobblemania'
+base { archivesName = 'cobblemania-economia' }
+
+repositories {
+    maven { url 'https://maven.fabricmc.net/' }
+    flatDir { dirs 'libs' }
+}
+
+configurations {
+    cobblemonLocal
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:1.21.1"
+    mappings "net.fabricmc:yarn:1.21.1+build.3:v2"
+    modImplementation "net.fabricmc:fabric-loader:0.16.5"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.102.0+1.21.1"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:2.0.0"
+
+    // Cobblemon JAR — modCompileOnly tells Loom to remap intermediary→yarn
+    // Place Cobblemon-fabric-1.7.3+1.21.1.jar in the libs/ folder
+    modCompileOnly fileTree(dir: 'libs', include: ['Cobblemon*.jar', 'cobblemon*.jar'])
+}
+
+processResources {
+    filteringCharset "UTF-8"
+    filesMatching("fabric.mod.json") { expand "version": project.version }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    it.options.release = 21
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+}
+
+jar {
+    from("LICENSE") { rename { "${it}_cobblemaniaeconomia" } }
+}

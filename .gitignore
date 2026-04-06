@@ -1,0 +1,53 @@
+# Claude Code
+CLAUDE.md
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build outputs
+out/
+target/
+libs/*.jar
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.env
+!*.env.example
+
+# Secrets and credentials
+credentials.json
+*.pem
+*.key
+
+# Database files (for embedded DBs)
+*.db
+*.ldb
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Game test artifacts
+run/
+saves/

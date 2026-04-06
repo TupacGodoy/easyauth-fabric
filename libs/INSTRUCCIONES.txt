@@ -1,0 +1,22 @@
+=== INSTRUCCIONES DE COMPILACIÓN ===
+
+PASO 1 — Coloca el JAR de Cobblemon aquí:
+   Copia: Cobblemon-fabric-1.7.3+1.21.1.jar
+   Destino: esta carpeta  libs/
+
+PASO 2 — Compila:
+   gradle clean build
+   JAR final: build/libs/cobblemania-economia-1.0.0.jar
+
+PASO 3 — Instala en el servidor:
+   Copia el JAR a la carpeta mods/ del servidor
+
+PASO 4 — Limpieza de datos (jugadores empiezan en 0):
+   Borra: config/modeconomia-data.json del servidor
+
+RANGOS (multiplicadores):
+   Trainer   = base, todos (×1.0)
+   Trainer+  = ×1.5 misiones, ×1.3 AFK
+   Elite     = ×1.9 misiones, ×1.8 AFK
+   Legendary = ×2.4 misiones, ×2.0 AFK
+   Mythical  = ×2.9 misiones, ×2.7 AFK
